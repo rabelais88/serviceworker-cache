@@ -1,0 +1,4 @@
+{
+  "exec": "http-server -c-1",
+  "ignore": [ "README.md", "node_modules" ]
+}
