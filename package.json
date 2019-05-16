@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "start": "http-server -c-1"
+    "start": "http-server -c-1",
+    "workbox:wiz": "workbox wizard",
+    "workbox:gen": "workbox generateSW",
+    "workbox:man": "workbox injectManifest",
+    "workbox:cpy": "workbox copyLibraries"
   },
   "keywords": [
     "pwa",
@@ -18,7 +22,8 @@
   "author": "Maximilian Schwarzmüller",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "http-server": "^0.10.0",
+    "workbox-cli": "^4.3.1"
   },
   "dependencies": {
     "nodemon": "^1.19.0"

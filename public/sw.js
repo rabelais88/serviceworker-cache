@@ -1,6 +1,5 @@
-console.log('[sw] running! - v1');
-
-var version = '3'
+var version = '4';
+console.log('[sw] running! v' + version);
 
 function cacheAction () {
   // 'caches' available in global scope in Service Worker
@@ -10,6 +9,7 @@ function cacheAction () {
       '/',
       '/src/js',
       '/index.html',
+      '/offline.html',
       '/src/js/app.js',
       '/src/js/feed.js',
       '/src/js/material.min.js',
@@ -68,6 +68,13 @@ self.addEventListener('fetch', function(ev) {
                 .then(function(cache) {
                   cache.put(req.url, res);
                   return res;
+                });
+            }).catch(function (err) {
+              // TODO: currently not working
+              console.log('could not access the network for the page');
+              caches.open('static-v' + version)
+                .then(function(cache) {
+                  return cache.match('/offline.html');
                 });
             });
         }
